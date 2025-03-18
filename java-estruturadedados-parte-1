@@ -1,0 +1,69 @@
+class No {
+    int posicao;
+    No proximo;
+
+    public No(int posicao) {
+        this.posicao = posicao;
+        this.proximo = null;
+    }
+}
+
+class ListaEncadeada {
+    private No inicio;
+
+    public ListaEncadeada() {
+        this.inicio = null;
+    }
+
+    public void adicionar(int posicao) {
+        No novoNo = new No(posicao);
+        if (inicio == null) {
+            inicio = novoNo;
+        } else {
+            No atual = inicio;
+            while (atual.proximo != null) {
+                atual = atual.proximo;
+            }
+            atual.proximo = novoNo;
+        }
+    }
+
+    public String mostrar() {
+        StringBuilder sb = new StringBuilder();
+        No atual = inicio;
+        while (atual != null) {
+            sb.append(atual.posicao).append(" -> ");
+            atual = atual.proximo;
+        }
+        return sb.length() > 0 ? sb.substring(0, sb.length() - 4) : "Nenhuma ocorrência";
+    }
+}
+
+class Palavra {
+    private String texto;
+    private ListaEncadeada ocorrencias;
+
+    public Palavra(String texto) {
+        this.texto = texto;
+        this.ocorrencias = new ListaEncadeada();
+    }
+
+    public void adicionarOcorrencia(int posicao) {
+        ocorrencias.adicionar(posicao);
+    }
+
+    public void exibirInformacoes() {
+        System.out.println("Palavra: " + texto + ", Ocorrências: " + ocorrencias.mostrar());
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Palavra palavra = new Palavra("teste");
+        palavra.adicionarOcorrencia(3);
+        palavra.adicionarOcorrencia(7);
+        palavra.adicionarOcorrencia(15);
+        
+        palavra.exibirInformacoes();
+    }
+}
