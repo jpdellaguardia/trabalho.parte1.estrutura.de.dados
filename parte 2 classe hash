@@ -1,0 +1,12 @@
+public class Main {
+    public static void main(String[] args) {
+        TabelaHash tabela = new TabelaHash();
+        tabela.adicionarPalavra("teste", 3);
+        tabela.adicionarPalavra("teste", 7);
+        tabela.adicionarPalavra("teste", 15);
+        tabela.adicionarPalavra("tabela", 10);
+        tabela.adicionarPalavra("hash", 20);
+        
+        tabela.exibirTabela();
+    }
+}
